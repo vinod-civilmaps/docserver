@@ -1,0 +1,116 @@
+{
+  "_args": [
+    [
+      "mammoth",
+      "/home/vinod/CivilMaps/doctohtml"
+    ]
+  ],
+  "_from": "mammoth@latest",
+  "_id": "mammoth@1.4.6",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/mammoth",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/mammoth_1.4.6_1526145902992_0.17263304912726185"
+  },
+  "_npmUser": {
+    "email": "mike@zwobble.org",
+    "name": "mwilliamson"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "mammoth",
+    "raw": "mammoth",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/mammoth/-/mammoth-1.4.6.tgz",
+  "_shasum": "1818934b0b34bb56f23b07e0670af31778543a8e",
+  "_shrinkwrap": null,
+  "_spec": "mammoth",
+  "_where": "/home/vinod/CivilMaps/doctohtml",
+  "author": {
+    "email": "mike@zwobble.org",
+    "name": "Michael Williamson"
+  },
+  "bin": {
+    "mammoth": "bin/mammoth"
+  },
+  "browser": {
+    "./lib/docx/files.js": "./browser/docx/files.js",
+    "./lib/unzip.js": "./browser/unzip.js"
+  },
+  "bugs": {
+    "url": "https://github.com/mwilliamson/mammoth.js/issues"
+  },
+  "dependencies": {
+    "argparse": "~1.0.3",
+    "bluebird": "~3.4.0",
+    "jszip": "~2.5.0",
+    "lop": "~0.4.0",
+    "path-is-absolute": "^1.0.0",
+    "sax": "~1.1.1",
+    "underscore": "~1.8.3",
+    "xmlbuilder": "~2.6.4"
+  },
+  "description": "Convert Word documents from docx to simple HTML and Markdown",
+  "devDependencies": {
+    "browserify": "~13.0.1",
+    "browserify-prepend-licenses": "~1.0.0",
+    "duck": "~0.1.11",
+    "eslint": "2.13.1",
+    "flow-bin": "^0.32.0",
+    "hamjest": "2.13.0",
+    "mocha": "~2.2.5",
+    "temp": "~0.7.0",
+    "uglify-js": "~2.4.8"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 109,
+    "integrity": "sha512-YxXy91mDZ3o/FULzvpcQeVF8lTPQQLAF9yo4pYMKTO253gMcKLmIOUjkaYdYx4pqymf0sEiY9qhWU3pNEnbLcA==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa9yNxCRA9TVsSAnZWagAABs0QAJVrkhjiU4DtSBpB6quW\nvVxUaCkCIh6J3S8E7dSVKm5Zg2JbAdN4ZCVs2v9jfwedIrt7mKf9zlHLReg4\nJEHZsrU6JtvhgJvER5W5BLVvw4pOqUjTjV4Ad8/b1P05oJnq+cEh9uf49UBX\nSr0XK/0reOkW5MPJ+xLhLafKr6lXSyWdvoYBF5kLoKA2/4T1yVq/6rk2y9af\nvmaM1IonzDA8NA8viJhEdLH5a0cv8d5xdLRobCULL+2Tmk1csxrCYpv48WmH\nkj7njXvUShfIIYlBodR3Koh+W8CiPheVwCOFVlRg5Ss5BN+XsN6v5V5DaGFW\nW0soFNW977hv1KXN2OCkXql3mi8Uc4LSaVILkf9GS3edzNphdvHMErMDAebb\njuYyMFgx74FyQlgh7/ZC5RMnIkt2sDvvTbDkgduFCdVa/4zayeiTE4q/uh/a\nqpFCypf7NcmHlMNEHtKY8iR6h/TCKKTuzwBVMWHyre10hyp+xN3GAfr/5JKp\ndppSDptAta7VAB2/REZcJESTwPB6xYC2qsvmDuehUH0fs/DghYZ/x6ORzsEE\nX1NLjZhsuemCqW3F9A2bV7GARVgEG313K7LixkBJEI5PxWt/jpew5FnJNTbV\n6aZr95PVKw1bD0lYANxqQaLbAmxP2bEmZCqFNf4PH5mApcG1OsoHpHDhssyh\ngz5Q\r\n=uXwP\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "1818934b0b34bb56f23b07e0670af31778543a8e",
+    "tarball": "https://registry.npmjs.org/mammoth/-/mammoth-1.4.6.tgz",
+    "unpackedSize": 2139562
+  },
+  "gitHead": "d3f02ae97fadff8209a3bda6644b8334c3b01279",
+  "homepage": "https://github.com/mwilliamson/mammoth.js#readme",
+  "keywords": [
+    "docx",
+    "html",
+    "markdown",
+    "md",
+    "office",
+    "word"
+  ],
+  "license": "BSD-2-Clause",
+  "main": "./lib/index.js",
+  "maintainers": [
+    {
+      "name": "mwilliamson",
+      "email": "mike@zwobble.org"
+    }
+  ],
+  "name": "mammoth",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwilliamson/mammoth.js.git"
+  },
+  "scripts": {
+    "prepublish": "make mammoth.browser.min.js",
+    "pretest": "eslint lib tests",
+    "test": "mocha 'test/**/*.tests.js'"
+  },
+  "version": "1.4.6"
+}

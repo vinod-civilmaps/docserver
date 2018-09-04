@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.snow.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"  type="text/javascript"> </script>
+        <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    </head>
+    <body>
+        <div>
+            <p>OurSol</p>
+            <input type="file" id="doc" accept="application/msword,
+            application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+            <label id="error"> </label>
+            <label id="progress-wrp"></label>
+        </div>
+        <div>
+            <p> Converted Doc</p>
+            <div id="converted_doc"></div>
+            <div id="feature_addition_editor_container" style="width:50%; height: 200px;">
+                <div>
+                    <h1>ADD FEATURE</h1>
+                    <div>
+                        Category
+                        <select id="category">
+                            <option value="geo-feature">geo feature</option>
+                            <option value="virtual-geo-feature">virtual geo feature</option>
+                            <option value="geo-trigger">geo trigger</option>
+                            <option value="geo-semantic">geo semantic</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="feature_toolbar"></div>
+                <div id="feature_editor"></div>
+                <button id="add_feature_btn"> Add </button>
+            </div>
+        </div>
+
+        <script  type="text/javascript">
+
+            var progressHandling = function (event) {
+                var percent = 0;
+                var position = event.loaded || event.position;
+                var total = event.total;
+                var progress_bar_id = "#progress-wrp";
+                if (event.lengthComputable) {
+                    percent = Math.ceil(position / total * 100);
+                }
+                // update progressbars classes so it fits your code
+                $(progress_bar_id + " .progress-bar").css("width", +percent + "%");
+                $(progress_bar_id + " .status").html(percent + "%");
+            };
+
+            $("#doc").change(function(){
+                var input = this;
+                var url = $(this).val();
+                var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                if (input.files && input.files[0] && (ext == "docx" || ext == "doc")) 
+                {
+                    var file = input.files[0];
+
+                    var formData = new FormData();
+
+                    // add assoc key values, this will be posts values
+                    formData.append("file", file, file.name);
+                    formData.append("upload_file", true);
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/oursolution",
+                        xhr: function () {
+                            var myXhr = $.ajaxSettings.xhr();
+                            if (myXhr.upload) {
+                                myXhr.upload.addEventListener('progress', progressHandling, false);
+                            }
+                            return myXhr;
+                        },
+                        success: function (data) {
+                            // your callback here
+                            $("#converted_doc").html(data.html);
+                            var toolbarOptions = [
+                                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                                ['blockquote', 'code-block'],
+
+                                [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                                [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                                [{ 'direction': 'rtl' }],                         // text direction
+
+                                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                                [ 'link', 'image', 'video' ],          // add's image support
+                                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                                [{ 'font': [] }],
+                                [{ 'align': [] }],
+
+                                ['clean']                                         // remove formatting button
+                            ];
+
+                            var formats = [
+                                'header',
+                                'bold',
+                                'italic',
+                                'underline',
+                                'strike',
+                                'blockquote',
+                                'list',
+                                'bullet',
+                                'indent',
+                                'link',
+                                'image'
+                            ];
+                            var quill = new Quill('#feature_editor', {
+                                modules: {
+                                    toolbar: toolbarOptions
+                                },
+                                formats: formats,
+                                theme: 'snow',   // Specify theme in configuration
+                                // modules: {
+                                //     // Equivalent to { toolbar: { container: '#toolbar' }}
+                                //     toolbar: '#feature_toolbar'
+                                // }
+                            });
+
+                            $('#add_feature_btn').click(function(){
+                                var feature = $('<div></div>')
+                                feature.append('<p> category ' + $('#category').val() + '</p>');
+                                feature.append('<div>' + quill.root.innerHTML + '</div>');
+                                feature.appendTo($("#converted_doc"));
+                                quill.setContents([{ insert: '\n' }]);
+                            });
+                        },
+                        error: function (error) {
+                            // handle error
+                        },
+                        async: true,
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        timeout: 60000
+                    });
+                }
+                else
+                {
+                    $("#error").html("ONLY DOCX SUPPORTED")
+                }
+            });
+            
+        </script>
+    </body>
+</html>
