@@ -64,7 +64,7 @@
                     formData.append("file", file, file.name);
                     formData.append("upload_file", true);
 
-
+                    $("#converted_doc").html('<img src="/assets/spinner.gif" />');
                     $.ajax({
                         type: "POST",
                         url: "/api/oursolution",
@@ -127,12 +127,13 @@
                                 var feature = $('<div></div>')
                                 feature.append('<p> category ' + $('#category').val() + '</p>');
                                 feature.append('<div>' + quill.root.innerHTML + '</div>');
-                                feature.appendTo($("#converted_doc"));
+                               // feature.appendTo($("#converted_doc"));
                                 quill.setContents([{ insert: '\n' }]);
                             });
                         },
                         error: function (error) {
                             // handle error
+                            $("#converted_doc").html('<p>Failed Loading document</p>');
                         },
                         async: true,
                         data: formData,
