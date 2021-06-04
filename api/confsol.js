@@ -1,7 +1,7 @@
 var request = require('request');
 
-var username = "vinod@civilmaps.com"
-var password = "vinod@civil"
+var username = "test"
+var password = "test"
 var auth = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
 
 function getConfHtml(pageId) {
